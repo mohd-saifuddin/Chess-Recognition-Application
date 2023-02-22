@@ -160,7 +160,8 @@ class Pipeline(object):
 
 
 if __name__ == '__main__':
-    chess_image = random.choice(glob(pathname=('../dataset/test/*jpeg')))
+    chess_image = random.choice(
+        glob(pathname=('../Chess-Recognition-Problem/dataset/test/*jpeg')))
     print(chess_image)
     pipe = Pipeline(chess_image=chess_image)
     fen_label, interpretation = pipe.predict()
