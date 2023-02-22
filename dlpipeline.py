@@ -4,7 +4,6 @@ from glob import glob
 from skimage.util.shape import view_as_blocks
 
 import cv2 as cv
-import numpy as np
 import plotly.express as px
 import random
 import tensorflow as tf
@@ -39,7 +38,7 @@ class Pipeline(object):
         image_fig = px.imshow(img=image)
         image_fig.update_layout(
             coloraxis_showscale=False, autosize=True,
-            height=500, margin=dict(l=0, r=0, b=0, t=0))
+            margin=dict(l=0, r=0, b=0, t=0))
         image_fig.update_xaxes(showticklabels=False)
         image_fig.update_yaxes(showticklabels=False)
         return image_fig
@@ -95,9 +94,12 @@ class Pipeline(object):
 
         interpretation = self.illegal_interpreter(fen_label=fen_label)
         if len(interpretation) > 0:
-            interpretation = "This is an illegal chess position. Reason is " + interpretation
+            interpretation = f"This is an illegal chess position. Reason is {interpretation}"
         else:
             interpretation = self.check_interpreter(fen_label=fen_label)
+
+        fen_label = f"The Forsyth-Edwards Notation (FEN) of an uploaded chess image is {fen_label}."
+        interpretation = f"Further interpretation: {interpretation}"
 
         return fen_label, interpretation
 

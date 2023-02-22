@@ -18,7 +18,7 @@ if os.path.isfile(path='chess_image.jpeg'):
     os.remove(path='./chess_image.jpeg')
 
 uploaded_file = st.file_uploader(
-    label='Choose a chess image below.', type=['jpeg'])
+    label='Please upload a chess image below.', type=['jpeg', 'png', 'jpg'])
 if uploaded_file is not None:
     image = Image.open(uploaded_file)
     image.save(fp='./chess_image.jpeg', format='JPEG')
@@ -26,7 +26,7 @@ if uploaded_file is not None:
     pipe = Pipeline(chess_image='./chess_image.jpeg')
     fen_label, interpretation = pipe.predict()
 
-    col1, col2 = st.columns([2, 1])
+    col1, col2 = st.columns([1, 1])
 
     with col1:
         st.plotly_chart(figure_or_data=pipe.chess_image_display,
