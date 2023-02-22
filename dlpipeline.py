@@ -26,6 +26,23 @@ class Pipeline(object):
         self.chess_image = chess_image
         self.chess_model = tf.keras.models.load_model(
             filepath='chess_model.h5')
+        self.chess_image_display = self.display_image()
+
+    def display_image(self):
+        """
+        This method reads the image and
+        gives plotly fig for the final display.
+        """
+        image = cv.imread(filename=self.chess_image)
+        image = cv.cvtColor(src=image, code=cv.COLOR_BGR2RGB)
+
+        image_fig = px.imshow(img=image)
+        image_fig.update_layout(
+            coloraxis_showscale=False, autosize=True,
+            height=500, margin=dict(l=0, r=0, b=0, t=0))
+        image_fig.update_xaxes(showticklabels=False)
+        image_fig.update_yaxes(showticklabels=False)
+        return image_fig
 
     def preprocess(self, resize_scale=(200, 200)):
         """
