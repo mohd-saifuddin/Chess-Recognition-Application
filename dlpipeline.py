@@ -63,20 +63,21 @@ class Pipeline(object):
     def fen_from_onehot(self, onehot):
         """
         This method converts onehot to FEN.
-        The original author of this method is 'PAVEL KORYAKIN'.
-        PAVEL KORYAKIN is also the maintainer of 'Chess Positions' dataset.
+        The original author of this method is 'Pavel Koryakin'.
+        Pavel Koryakin is also the maintainer of Chess Positions dataset.
         """
         output = str()
         for j in range(self.rows):
             for i in range(self.cols):
+                # TensorFlow coded 12 for empty squares.
                 if onehot[j][i] == 12:
                     output += ' '
                 else:
                     output += self.piece_symbols[int(onehot[j][i])]
-            if j != 7:
+            if j != self.rows - 1:
                 output += '/'
 
-        for i in range(8, 0, -1):
+        for i in range(self.rows, 0, -1):
             output = output.replace(' ' * i, str(i))
 
         return output
