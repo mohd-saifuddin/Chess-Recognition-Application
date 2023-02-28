@@ -19,19 +19,31 @@ if os.path.isfile(path='chess_image.jpeg'):
 
 uploaded_file = st.file_uploader(
     label='Please upload a chess image below.', type=['jpeg', 'png', 'jpg'])
+
 if uploaded_file is not None:
-    image = Image.open(uploaded_file)
-    image.save(fp='./chess_image.jpeg', format='JPEG')
+    try:
+        image = Image.open(uploaded_file)
+        image.save(fp='./chess_image.jpeg', format='JPEG')
 
-    pipe = Pipeline(chess_image='./chess_image.jpeg')
-    fen_label, interpretation = pipe.predict()
+        pipe = Pipeline(chess_image='./chess_image.jpeg')
+        fen_label, interpretation = pipe.predict()
 
-    col1, col2 = st.columns([1, 1])
+        col1, col2 = st.columns([1, 1])
 
-    with col1:
-        st.plotly_chart(figure_or_data=pipe.chess_image_display,
-                        use_container_width=True)
+        with col1:
+            st.plotly_chart(figure_or_data=pipe.chess_image_display,
+                            use_container_width=True)
 
-    with col2:
-        st.write(fen_label)
-        st.write(interpretation)
+        with col2:
+            st.write(fen_label)
+            st.write(interpretation)
+            st.write(
+                'Interested to know how I predict the FEN & interpret the same of a chess images?')
+            st.write(
+                'Please read this detailed [blog](https://medium.com/towards-data-science/chess-recognition-problem-a-deep-dive-solution-e4d8a439dc37) written by creator.')
+    except:
+        st.write('Please uploaded a valid test image.')
+        st.write(
+            'I would recommend you to download the test images from [dataset](https://www.kaggle.com/datasets/koryakinp/chess-positions) source.')
+        st.write(
+            'Please read this detailed [blog](https://medium.com/towards-data-science/chess-recognition-problem-a-deep-dive-solution-e4d8a439dc37) written by creator.')
