@@ -38,12 +38,12 @@ if uploaded_file is not None:
             st.write(fen_label)
             st.write(interpretation)
             st.write(
-                'Interested to know how I predict the FEN & interpret the same of a chess images?')
+                'Interested to know how I predict the FEN & interpret the same of a chess image?')
             st.write(
                 'Please read this detailed [blog](https://medium.com/towards-data-science/chess-recognition-problem-a-deep-dive-solution-e4d8a439dc37) written by my creator [Mohammed Saifuddin](https://www.linkedin.com/in/mohammed-saifuddin-850a6b133/).')
     except:
-        st.write('Please uploaded a valid test image.')
+        st.write('Please upload a valid chess image.')
         st.write(
-            'I would recommend you to download the test images from [dataset](https://www.kaggle.com/datasets/koryakinp/chess-positions) source.')
+            'I would recommend you to download the test chess images from the [dataset](https://www.kaggle.com/datasets/koryakinp/chess-positions) source.')
         st.write(
             'Please read this detailed [blog](https://medium.com/towards-data-science/chess-recognition-problem-a-deep-dive-solution-e4d8a439dc37) written by my creator [Mohammed Saifuddin](https://www.linkedin.com/in/mohammed-saifuddin-850a6b133/).')
