@@ -2,7 +2,7 @@
 
 ### Solution
 
-Application URL: https://mohd-saifuddin-chess-recognition-application-app-fpa3mt.streamlit.app/
+Application URL: https://huggingface.co/spaces/mohd-saifuddin/Chess-Recognition-2D
 
 Demo URL: https://youtu.be/i2un9UEr9rY
 
